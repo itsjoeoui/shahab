@@ -1,7 +1,7 @@
 import os
 import discord
 from dotenv import load_dotenv
-from modules import geocoding
+from modules import address
 from modules import wolfram
 
 load_dotenv()
@@ -24,7 +24,7 @@ async def on_message(message):
         await message.channel.send('Bruh')
 
     if "/address" == wordlist[0]:
-        await message.channel.send(geocoding.get_full_address(" ".join(wordlist[1:])))
+        await message.channel.send(address.get_full_address(" ".join(wordlist[1:])))
 
     if "/wolfram" == wordlist[0]:
         keyword = ' '.join(wordlist[1:]) 
