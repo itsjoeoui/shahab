@@ -23,6 +23,6 @@ async def on_message(message):
         await message.channel.send('Bruh')
 
     if "/address" == wordlist[0]:
-        await message.channel.send(geocoding.getAddress(" ".join(wordlist[1:])))
+        await message.channel.send(geocoding.get_full_address(" ".join(wordlist[1:])))
 
 client.run(TOKEN)
