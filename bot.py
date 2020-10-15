@@ -35,7 +35,11 @@ async def on_message(message):
         await message.channel.send(file=discord.File('cache/wolfram_result.jpg', f'{keyword}.jpg'))
 
     if wordlist[0] == "/solve":
+        result = solve.get_short_result(keyword)
         await message.channel.send(solve.get_short_result(keyword))
+        if result == "No short answer available":
+            await message.channel.send("Retrieving a long answer...")
+            await message.channel.send(file=discord.File('cache/wolfram_result.jpg', f'{keyword}.jpg')) 
 
     if wordlist[0] == "/status":
         if status.get_status(keyword):
