@@ -3,6 +3,7 @@ import discord
 from dotenv import load_dotenv
 from modules import address
 from modules import wolfram
+from modules import solve
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -31,5 +32,8 @@ async def on_message(message):
         await message.channel.send(f'Searching "{keyword}" on WolframAlpha...')
         wolfram.get_full_result(keyword)
         await message.channel.send(file=discord.File('cache/wolfram_result.jpg', f'{keyword}.jpg'))
+        
+    if "/solve" == wordlist[0]:
+        await message.channel.send(solve.get_short_result(" ".join(wordlist[1:])))
 
 client.run(TOKEN)
