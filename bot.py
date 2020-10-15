@@ -28,6 +28,7 @@ async def on_message(message):
 
     if "/wolfram" == wordlist[0]:
         keyword = ' '.join(wordlist[1:]) 
+        await message.channel.send(f'Searching "{keyword}" on WolframAlpha...')
         wolfram.get_full_result(keyword)
         await message.channel.send(file=discord.File('cache/wolfram_result.jpg', f'{keyword}.jpg'))
 
