@@ -2,6 +2,7 @@ import os
 import discord
 from dotenv import load_dotenv
 from modules import geocoding
+from modules import wolfram
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -24,5 +25,10 @@ async def on_message(message):
 
     if "/address" == wordlist[0]:
         await message.channel.send(geocoding.get_full_address(" ".join(wordlist[1:])))
+
+    if "/wolfram" == wordlist[0]:
+        keyword = ' '.join(wordlist[1:]) 
+        wolfram.get_full_result(keyword)
+        await message.channel.send(file=discord.File('cache/wolfram_result.jpg', f'{keyword}.jpg'))
 
 client.run(TOKEN)
