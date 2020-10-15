@@ -21,26 +21,26 @@ async def on_message(message):
         return
 
     wordlist = message.content.split()
-    keyword = ' '.join(wordlist[1:]) 
+    keyword = ' '.join(wordlist[1:])
 
     if "bruh" in message.content.lower():
         await message.channel.send('Bruh')
 
-    if "/address" == wordlist[0]:
+    if wordlist[0] == "/address":
         await message.channel.send(address.get_full_address(keyword))
 
-    if "/wolfram" == wordlist[0]:
+    if wordlist[0] == "/wolfram":
         await message.channel.send(f'Searching "{keyword}" on WolframAlpha...')
         wolfram.get_full_result(keyword)
         await message.channel.send(file=discord.File('cache/wolfram_result.jpg', f'{keyword}.jpg'))
-        
-    if "/solve" == wordlist[0]:
+
+    if wordlist[0] == "/solve":
         await message.channel.send(solve.get_short_result(keyword))
 
-    if "/status" == wordlist[0]:
-        if status.get_status(keyword) == True:
+    if wordlist[0] == "/status":
+        if status.get_status(keyword):
             await message.channel.send(f'"{keyword}" is currently up!')
         else:
-            await message.channel.send(f'"{keyword}" is down or invalid :(') 
+            await message.channel.send(f'"{keyword}" is down or invalid :(')
 
 client.run(TOKEN)
