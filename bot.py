@@ -45,6 +45,11 @@ async def status(ctx, *args):
     else:
         await ctx.send(f'{keyword} is down or invalid :(')
 
+@bot.command()
+async def say(ctx, *args):
+    keyword = ' '.join(args)
+    await ctx.send(keyword)
+
 @bot.event
 async def on_message(message):
     if message.author == bot.user:
