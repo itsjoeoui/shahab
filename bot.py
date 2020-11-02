@@ -59,9 +59,13 @@ async def on_message(message):
         await message.channel.send('Bruh')
     
     thanks_list = ['thank you', 'thank u', 'thanks', 'thx']
+    okay_list = ['okay', 'ah', 'i see', 'right']
 
     if any(x in message.content.lower() for x in thanks_list):
         await message.channel.send(file=discord.File('audio/YouAreVeryWelcome.mp3'))
+
+    if any(x in message.content.lower() for x in okay_list):
+        await message.channel.send(file=discord.File('audio/ThatIsHowWeDoItGuys.mp3')) 
 
     await bot.process_commands(message)
 
