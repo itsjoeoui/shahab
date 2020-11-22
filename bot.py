@@ -28,39 +28,34 @@ async def ping(ctx):
     await ctx.send(f'Pong! {round(bot.latency * 1000)}ms')
 
 @bot.command()
-async def address(ctx, *args):
-    keyword = ' '.join(args)
-    await ctx.send(geocoding.get_full_address(keyword))
+async def address(ctx, *, args):
+    await ctx.send(geocoding.get_full_address(args))
 
 @bot.command()
-async def wolfram(ctx, *args):
-    keyword = ' '.join(args)
-    await ctx.send(f'Searching {keyword} on WolframAlpha...')
-    wolframalpha.get_full_result(keyword)
-    await ctx.send(file=discord.File('cache/wolfram_result.jpg', f'{keyword}.jpg'))
+async def wolfram(ctx, *, args):
+    await ctx.send(f'Searching {args} on WolframAlpha...')
+    wolframalpha.get_full_result(args)
+    await ctx.send(file=discord.File('cache/wolfram_result.jpg', f'{args}.jpg'))
 
 @bot.command()
-async def solve(ctx, *args):
-    keyword = ' '.join(args)
-    result = wolframalpha.get_short_result(keyword)
-    await ctx.send(wolframalpha.get_short_result(keyword))
+async def solve(ctx, *, args):
+    result = wolframalpha.get_short_result(args)
+    await ctx.send(wolframalpha.get_short_result(args))
     if result == 'No short answer available':
         await ctx.send('Retrieving a long answer...')
-        wolframalpha.get_full_result(keyword)
-        await ctx.send(file=discord.File('cache/wolfram_result.jpg', f'{keyword}.jpg'))
+        wolframalpha.get_full_result(args)
+        await ctx.send(file=discord.File('cache/wolfram_result.jpg', f'{args}.jpg'))
 
 @bot.command()
-async def status(ctx, *args):
-    keyword = ' '.join(args)
-    if webstatus.get_status(keyword):
-        await ctx.send(f'{keyword} is currently up!')
+async def status(ctx, *, args):
+    if webstatus.get_status(args):
+        await ctx.send(f'{args} is currently up!')
     else:
-        await ctx.send(f'{keyword} is down or invalid :(')
+        await ctx.send(f'{args} is down or invalid :(')
 
 @bot.command()
-async def say(ctx, *args):
-    keyword = ' '.join(args)
-    await ctx.send(keyword)
+async def say(ctx, *, args):
+    await ctx.send(args)
 
 @bot.event
 async def on_message(message):
