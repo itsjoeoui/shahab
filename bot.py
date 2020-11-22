@@ -78,6 +78,10 @@ async def status(ctx, *, args):
 async def say(ctx, *, args):
     await ctx.send(args)
 
+@bot.command()
+async def source(ctx):
+    await ctx.send('GitHub: https://github.com/itsjoeoui/discord')
+
 @bot.event
 async def on_message(message):
     if message.author == bot.user:
