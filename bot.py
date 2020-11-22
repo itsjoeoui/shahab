@@ -28,6 +28,14 @@ async def ping(ctx):
     await ctx.send(f'Pong! {round(bot.latency * 1000)}ms')
 
 @bot.command()
+async def kick(ctx, member:discord.Member, *, reason=None):
+    await member.kick(reason=reason)
+
+@bot.command()
+async def ban(ctx, member:discord.Member, *, reason=None):
+    await member.ban(reason=reason)
+
+@bot.command()
 async def address(ctx, *, args):
     await ctx.send(geocoding.get_full_address(args))
 
