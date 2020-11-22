@@ -15,6 +15,18 @@ bot = commands.Bot(command_prefix='/')
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
 
+@bot.event
+async def on_member_join(member):
+    print(f'{member} has joined the server')
+
+@bot.event
+async def on_member_remove(member):
+    print(f'{member} has left the server')
+
+@bot.command()
+async def ping(ctx):
+    await ctx.send(f'Pong! {round(bot.latency * 1000)}ms')
+
 @bot.command()
 async def address(ctx, *args):
     keyword = ' '.join(args)
