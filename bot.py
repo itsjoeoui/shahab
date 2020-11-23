@@ -13,7 +13,7 @@ bot = commands.Bot(command_prefix='/')
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity=discord.Game('my Tesla'))
+    await bot.change_presence(activity=discord.Game('my Tesla /help'))
     print('We have logged in as {0.user}'.format(bot))
 
 @bot.event
