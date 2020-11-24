@@ -13,7 +13,7 @@ serviceurls = {
     'short': 'http://api.wolframalpha.com/v1/result?'
 }
 
-quickreplies = [
+quickreplies = (
     "Wtf is this shit??", 
     "Bruh you're kidding me lmao", 
     "Give me a joint instead of this shit", 
@@ -21,7 +21,7 @@ quickreplies = [
     "Lol kill yourself", 
     "I can't solve this lmao", 
     "Aight I'm out"
-]
+)
 
 def get_full_result(keyword):
     r = requests.get(serviceurls['simple'], params = {'appid': TOKEN, 'i': keyword})
