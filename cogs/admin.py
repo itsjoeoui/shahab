@@ -11,14 +11,6 @@ class Admin(commands.Cog):
         await self.client.change_presence(activity=discord.Game('my Tesla /help'))
         print('We have logged in as {0.user}'.format(self.client))
     
-    @commands.Cog.listener()
-    async def on_member_join(self, member):
-        print(f'{member} has joined the server')
-
-    @commands.Cog.listener()
-    async def on_member_remove(self, member):
-        print(f'{member} has left the server')
-
     @commands.command()
     async def ping(self, ctx):
         await ctx.send(f'Pong! {round(self.client.latency * 1000)}ms')
