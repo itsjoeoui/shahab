@@ -4,7 +4,6 @@ import discord
 from dotenv import load_dotenv
 from modules import geocoding
 from modules import wolframalpha
-from modules import webstatus
 from discord.ext import commands
 
 load_dotenv()
