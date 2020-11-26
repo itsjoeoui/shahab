@@ -1,6 +1,8 @@
 import random
 import discord
 from discord.ext import commands
+from cogs.utils import geocoding
+from cogs.utils import wolframalpha
 
 class Others(commands.Cog):
     
@@ -62,6 +64,33 @@ class Others(commands.Cog):
     @commands.command()
     async def runs(self, ctx):
         await ctx.send(random.choice(self.RUN_STRINGS))
+
+    @commands.command()
+    async def address(self, ctx, *, args):
+        await ctx.send(geocoding.get_full_address(args))
+
+    @commands.command()
+    async def wolfram(self, ctx, *, args):
+        await ctx.send(f'Searching {args} on WolframAlpha...')
+        wolframalpha.get_full_result(args)
+        await ctx.send(file=discord.File('cache/wolfram_result.jpg', f'{args}.jpg'))
+
+    @commands.command()
+    async def solve(self, ctx, *, args):
+        result = wolframalpha.get_short_result(args)
+        await ctx.send(wolframalpha.get_short_result(args))
+        if result == 'No short answer available':
+            await ctx.send('Retrieving a long answer...')
+            wolframalpha.get_full_result(args)
+            await ctx.send(file=discord.File('cache/wolfram_result.jpg', f'{args}.jpg'))
+
+    @commands.command()
+    async def say(self, ctx, *, args):
+        await ctx.send(args)
+
+    @commands.command()
+    async def source(self, ctx):
+        await ctx.send('GitHub: https://github.com/itsjoeoui/discord')
 
 def setup(client):
     client.add_cog(Others(client))
