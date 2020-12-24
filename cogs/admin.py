@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 
 class Admin(commands.Cog):
-    
+
     def __init__(self, client):
         self.client = client
 
@@ -10,7 +10,7 @@ class Admin(commands.Cog):
     async def on_ready(self):
         await self.client.change_presence(activity=discord.Game('my Tesla /help'))
         print('We have logged in as {0.user}'.format(self.client))
-    
+
     @commands.command()
     async def ping(self, ctx):
         await ctx.send(f'Pong! {round(self.client.latency * 1000)}ms')

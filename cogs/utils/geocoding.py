@@ -10,7 +10,7 @@ api_key = False
 if api_key is False:
     api_key = 42
     serviceurl = 'http://py4e-data.dr-chuck.net/json?'
-else :
+else:
     serviceurl = 'https://maps.googleapis.com/maps/api/geocode/json?'
 
 # Ignore SSL certificate errors
@@ -34,7 +34,7 @@ def get_full_address(address):
         js = None
 
     if not js or 'status' not in js or js['status'] != 'OK':
-        return(f"Can't find {address} in the database")
+        return f"Can't find {address} in the database"
 
     location = js['results'][0]['formatted_address']
-    return(location)
+    return location

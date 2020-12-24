@@ -5,7 +5,7 @@ from cogs.utils import geocoding
 from cogs.utils import wolframalpha
 
 class Others(commands.Cog):
-    
+
     RUN_STRINGS = (
         "Where do you think you're going?",
         "Huh? what? did they get away?",
