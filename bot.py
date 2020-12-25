@@ -3,11 +3,15 @@ import random
 import discord
 from dotenv import load_dotenv
 from discord.ext import commands
+import ctypes
+import ctypes.util
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
 client = commands.Bot(command_prefix='/')
+
+discord.opus.load_opus(ctypes.util.find_library('opus'))
 
 @client.command()
 async def load(ctx, extension):
