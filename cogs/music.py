@@ -24,14 +24,26 @@ class Music(commands.Cog):
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
         channel.play(discord.FFmpegPCMAudio('cache/music.mp3'))
-    
+
     @commands.command()
     async def pause(self, ctx):
-        pass
+        vc = ctx.voice_client
+        if not vc or not vc.is_playing():
+            return await ctx.send("I am not currently playing anything!")
+        elif vc.is_paused():
+            return
+        vc.pause()
+        await ctx.send(f'{ctx.author}: Paused the song!')
 
     @commands.command()
     async def resume(self, ctx):
-        pass 
+        vc = ctx.voice_client
+        if not vc or not vc.is_connected():
+            return await ctx.send("I am not currently playing anything!")
+        elif not vc.is_paused():
+            return
+        vc.resume()
+        await ctx.send(f'{ctx.author}: Resumed the song!')
 
     @commands.command()
     async def leave(self, ctx):
