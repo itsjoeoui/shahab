@@ -2,3 +2,4 @@ discord.py
 python-dotenv
 requests
 youtube_dl
+PyNaCl
