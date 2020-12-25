@@ -5,11 +5,13 @@ import youtube_dl
 
 class Music(commands.Cog):
     def __init__(self, client):
-        self.client = client
+        pass
 
     @commands.command()
     async def play(self, ctx, url):
-        channel = await ctx.author.voice.channel.connect()
+        vc = ctx.voice_client
+        if not vc or not vc.is_connected():
+            await ctx.author.voice.channel.connect()
 
         ydl_opts = {
             'outtmpl': 'cache/music.%(ext)s',
@@ -23,7 +25,8 @@ class Music(commands.Cog):
 
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
-        channel.play(discord.FFmpegPCMAudio('cache/music.mp3'))
+        source = discord.FFmpegPCMAudio('cache/music.mp3')
+        ctx.guild.voice_client.play(source)
 
     @commands.command()
     async def pause(self, ctx):
