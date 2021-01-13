@@ -1,5 +1,4 @@
-import random
-from os.path import join, dirname, os
+import os
 import requests
 from dotenv import load_dotenv
 
