@@ -12,7 +12,9 @@ serviceurls = {
 
 def get_full_result(keyword):
     r = requests.get(serviceurls['simple'], params={'appid': TOKEN, 'i': keyword})
-    with open('cache/wolfram_result.jpg', 'wb+') as handler:
+    filename = 'cache/wolfram.jpg'
+    os.makedirs(os.path.dirname(filename), exist_ok=True)
+    with open(filename, 'wb') as handler:
         handler.write(r.content)
 
 def get_short_result(keyword):

@@ -73,7 +73,7 @@ class Others(commands.Cog):
     async def wolfram(self, ctx, *, args):
         await ctx.send(f'Searching {args} on WolframAlpha...')
         wolframalpha.get_full_result(args)
-        await ctx.send(file=discord.File('cache/wolfram_result.jpg', f'{args}.jpg'))
+        await ctx.send(file=discord.File('cache/wolfram.jpg', f'{args}.jpg'))
 
     @commands.command()
     async def solve(self, ctx, *, args):
@@ -82,7 +82,7 @@ class Others(commands.Cog):
         if result == 'No short answer available':
             await ctx.send('Retrieving a long answer...')
             wolframalpha.get_full_result(args)
-            await ctx.send(file=discord.File('cache/wolfram_result.jpg', f'{args}.jpg'))
+            await ctx.send(file=discord.File('cache/wolfram.jpg', f'{args}.jpg'))
 
     @commands.command()
     async def say(self, ctx, *, args):
