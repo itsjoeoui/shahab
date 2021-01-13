@@ -4,12 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-"discord.py" = "*"
-requests = "*"
-python-dotenv = "*"
 wavelink = "*"
+"discord.py" = "*"
+python-dotenv = "*"
+requests = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.9"
+python_version = "3.8"
