@@ -90,7 +90,7 @@ class Others(commands.Cog):
 
     @commands.command()
     async def source(self, ctx):
-        await ctx.send('GitHub: https://github.com/itsjoeoui/discord')
+        await ctx.send('GitHub: https://github.com/itsjoeoui/pydiscord')
 
 def setup(bot):
     bot.add_cog(Others(bot))
