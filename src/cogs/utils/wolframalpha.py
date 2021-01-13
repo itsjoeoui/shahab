@@ -1,7 +1,9 @@
 import random
 from os.path import join, dirname, os
 import requests
+from dotenv import load_dotenv
 
+load_dotenv()
 TOKEN = os.getenv('WOLFRAM_TOKEN')
 
 serviceurls = {
