@@ -66,27 +66,25 @@ class Others(commands.Cog):
         await ctx.send(random.choice(self.RUN_STRINGS))
 
     @commands.command()
-    async def address(self, ctx, *, args):
-        await ctx.send(geocoding.get_full_address(args))
+    async def address(self, ctx, *args):
+        await ctx.send(geocoding.get_full_address(" ".join(args)))
 
     @commands.command()
-    async def wolfram(self, ctx, *, args):
-        await ctx.send(f'Searching {args} on WolframAlpha...')
-        wolframalpha.get_full_result(args)
-        await ctx.send(file=discord.File('cache/wolfram.jpg', f'{args}.jpg'))
+    async def wolfram(self, ctx, *args):
+        wolframalpha.get_full_result(" ".join(args))
+        await ctx.send(file=discord.File('cache/wolfram.jpg', f'{" ".join(args)}.jpg'))
 
     @commands.command()
-    async def solve(self, ctx, *, args):
-        result = wolframalpha.get_short_result(args)
-        await ctx.send(wolframalpha.get_short_result(args))
+    async def solve(self, ctx, *args):
+        result = wolframalpha.get_short_result(" ".join(args))
+        await ctx.send(result)
         if result == 'No short answer available':
             await ctx.send('Retrieving a long answer...')
-            wolframalpha.get_full_result(args)
-            await ctx.send(file=discord.File('cache/wolfram.jpg', f'{args}.jpg'))
+            await self.wolfram(ctx, ' '.join(" ".join(args)))
 
     @commands.command()
-    async def say(self, ctx, *, args):
-        await ctx.send(args)
+    async def say(self, ctx, *args):
+        await ctx.send(" ".join(args))
 
     @commands.command()
     async def source(self, ctx):
