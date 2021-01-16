@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9e348e1974f0f39da310cd4b571fd9fa62804931e25c30ac3df3a20060fb84af"
+            "sha256": "a03b7019643307651251f04229b0e5895d7545bea06fe88710aec63601f10fe3"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -81,6 +81,13 @@
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==2.10"
         },
+        "lavalink": {
+            "hashes": [
+                "sha256:94405f838b0f05fded1cc4b1334cba8f716ecbc61f5f342a3ddb5171dfecdd0b"
+            ],
+            "index": "pypi",
+            "version": "==3.1.3"
+        },
         "multidict": {
             "hashes": [
                 "sha256:1ece5a3369835c20ed57adadc663400b5525904e53bae59ec854a5d36b39b21a",
@@ -127,14 +134,6 @@
             ],
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4' and python_version < '4'",
             "version": "==1.26.2"
-        },
-        "wavelink": {
-            "hashes": [
-                "sha256:31e01e5e85683c29b79cf0093fda1bcd31d845077c9db1e05bd657e82af5ced6",
-                "sha256:88ff1cd1e454fe353dca1b42b1b17e27822d9010673107ac9e00e3ec6480e833"
-            ],
-            "index": "pypi",
-            "version": "==0.9.6"
         },
         "yarl": {
             "hashes": [
