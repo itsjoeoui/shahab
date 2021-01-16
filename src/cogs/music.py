@@ -21,7 +21,7 @@ class Music(commands.Cog):
                                               rest_uri='http://127.0.0.1:2333',
                                               password='youshallnotpass',
                                               identifier='TEST',
-                                              region='us_central')
+                                              region='us_east')
 
     @commands.command(name='connect')
     async def connect_(self, ctx, *, channel: discord.VoiceChannel=None):
@@ -29,25 +29,52 @@ class Music(commands.Cog):
             try:
                 channel = ctx.author.voice.channel
             except AttributeError:
+                embed = discord.Embed(color=discord.Color.red())
+                embed.title = 'Please join a voice channel!'
+                await ctx.send(embed=embed)                
                 raise discord.DiscordException('No channel to join. Please either specify a valid channel or join one.')
+        
+        embed = discord.Embed(color=discord.Color.blue())
+        embed.title = f'Connecting to **`{channel.name}`**'
 
         player = self.bot.wavelink.get_player(ctx.guild.id)
-        await ctx.send(f'Connecting to **`{channel.name}`**')
+        await ctx.send(embed=embed)
         await player.connect(channel.id)
+
+    @commands.command(name='disconnect', aliases=['bye'])
+    async def _disconnect(self, ctx):
+        player = self.bot.wavelink.get_player(ctx.guild.id)
+
+        if not player.is_connected:
+            embed = discord.Embed(color=discord.Color.red())
+            embed.title = 'I am not connected to any voice channel...'
+        else:
+            embed = discord.Embed(color=discord.Color.blue())
+            embed.title = 'Bye~ \U0001F44B'
+
+        await ctx.send(embed=embed)
+        await player.disconnect()
 
     @commands.command()
     async def play(self, ctx, *, query: str):
         tracks = await self.bot.wavelink.get_tracks(f'ytsearch:{query}')
 
         if not tracks:
-            return await ctx.send('Could not find any songs with that query.')
+            embed = discord.Embed(color=discord.Color.red())
+            embed.title = 'Could not find any songs with that query :('
+            return await ctx.send(embed=embed)
 
         player = self.bot.wavelink.get_player(ctx.guild.id)
         if not player.is_connected:
             await ctx.invoke(self.connect_)
 
-        await ctx.send(f'Added {str(tracks[0])} to the queue.')
-        await player.play(tracks[0])
+        if not player.is_playing:
+            embed = discord.Embed(color=discord.Color.green())
+            embed.title = 'Track Queued \U0001f44c'
+            embed.description = str(tracks[0])
+
+            await ctx.send(embed=embed)        
+            await player.play(tracks[0])
 
 def setup(bot):
     bot.add_cog(Music(bot))
