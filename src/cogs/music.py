@@ -27,11 +27,11 @@ class Music(commands.Cog):
         lavalink.add_event_hook(self.track_hook)
 
     def cog_unload(self):
-        """ Cog unload handler. This removes any event hooks that were registered. """
+        """Cog unload handler. This removes any event hooks that were registered."""
         self.bot.lavalink._event_hooks.clear()
 
     async def cog_before_invoke(self, ctx):
-        """ Command before-invoke handler. """
+        """Command before-invoke handler."""
         guild_check = ctx.guild is not None
         #  This is essentially the same as `@commands.guild_only()`
         #  except it saves us repeating ourselves (and also a few lines).
@@ -51,7 +51,7 @@ class Music(commands.Cog):
             # if you want to do things differently.
 
     async def ensure_voice(self, ctx):
-        """ This check ensures that the bot and command author are in the same voicechannel. """
+        """This check ensures that the bot and command author are in the same voicechannel."""
         player = self.bot.lavalink.player_manager.create(ctx.guild.id, endpoint=str(ctx.guild.region))
         # Create returns a player if one exists, otherwise creates.
         # This line is important because it ensures that a player always exists for a guild.
@@ -93,7 +93,7 @@ class Music(commands.Cog):
             await self.connect_to(guild_id, None)
 
     async def connect_to(self, guild_id: int, channel_id: str):
-        """ Connects to the given voicechannel ID. A channel_id of `None` means disconnect. """
+        """Connects to the given voicechannel ID. A channel_id of `None` means disconnect."""
         ws = self.bot._connection._get_websocket(guild_id)
         await ws.voice_state(str(guild_id), channel_id)
         # The above looks dirty, we could alternatively use `bot.shards[shard_id].ws` but that assumes
@@ -101,7 +101,7 @@ class Music(commands.Cog):
 
     @commands.command(aliases=['p'])
     async def play(self, ctx, *, query: str):
-        """ Searches and plays a song from a given query. """
+        """Searches and plays a song from a given query."""
         # Get the player for this guild from cache.
         player = self.bot.lavalink.player_manager.get(ctx.guild.id)
         # Remove leading and trailing <>. <> may be used to suppress embedding links in Discord.
@@ -156,7 +156,7 @@ class Music(commands.Cog):
 
     @commands.command(aliases=['dc'])
     async def disconnect(self, ctx):
-        """ Disconnects the player from the voice channel and clears its queue. """
+        """Disconnects the player from the voice channel and clears its queue."""
         player = self.bot.lavalink.player_manager.get(ctx.guild.id)
 
         if not player.is_connected:
