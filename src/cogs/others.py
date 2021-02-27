@@ -1,6 +1,8 @@
 import random
 import discord
 from discord.ext import commands
+from chessdotcom import get_player_profile as gpp
+from chessdotcom import is_player_online as ipo
 from cogs.utils import geocoding
 from cogs.utils import wolframalpha
 
@@ -83,6 +85,26 @@ class Others(commands.Cog):
         if result == 'No short answer available':
             await ctx.send('Retrieving a long answer...')
             await self.wolfram(ctx, keyword)
+
+    @commands.command()
+    async def chess(self, ctx, *, args):
+        data = gpp(args).json
+        description = f"""
+        **Username:** {data['username']}
+        **Player ID:** {data['player_id']}
+        **Followers:** {data['followers']}
+        **Country:** {data['country'].split('/')[-1]}
+        **Location:** {data['location']}
+        **Status:** {data['status']}
+        **Is Online:** {ipo(args).json['online']}
+        """
+        embed = discord.Embed(
+            title=data['name'],
+            color=discord.Color.green(),
+            description = description
+        )
+        embed.set_thumbnail(url=data['avatar'])
+        await ctx.send(embed=embed)
 
     @commands.command()
     async def say(self, ctx, *, args):

@@ -8,6 +8,8 @@ name = "pypi"
 python-dotenv = "*"
 requests = "*"
 lavalink = "*"
+"chess.com" = "*"
+pylint = "*"
 
 [dev-packages]
 
