@@ -94,7 +94,6 @@ class Others(commands.Cog):
         **Player ID:** {data['player_id']}
         **Followers:** {data['followers']}
         **Country:** {data['country'].split('/')[-1]}
-        **Location:** {data['location']}
         **Status:** {data['status']}
         **Is Online:** {ipo(args).json['online']}
         """
