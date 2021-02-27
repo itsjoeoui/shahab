@@ -96,6 +96,7 @@ class Others(commands.Cog):
         **Country:** {data['country'].split('/')[-1]}
         **Status:** {data['status']}
         **Is Online:** {ipo(args).json['online']}
+        [View this profile on chess.com]({data['url']})
         """
         embed = discord.Embed(
             title=data['name'],
