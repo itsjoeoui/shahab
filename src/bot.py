@@ -1,7 +1,8 @@
 import os
+from datetime import datetime as dt
 from dotenv import load_dotenv
 import discord
-from discord.ext import commands
+from discord.ext import commands, tasks
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -15,6 +16,14 @@ async def on_ready():
     bot.load_extension('cogs.music')
     bot.load_extension('cogs.others')
     print('We have logged in as {0.user}'.format(bot))
+
+    @tasks.loop(minutes=10)
+    async def update_countdown():
+        dayleft = (dt(2021, 6, 3) - dt.now()).days+1
+        channel = bot.get_channel(817116049325424700)
+        await channel.edit(name=f"Semester Count: {dayleft}")
+
+    update_countdown.start()
 
 @bot.event
 async def on_message(message):

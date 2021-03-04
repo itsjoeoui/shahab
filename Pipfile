@@ -10,6 +10,7 @@ requests = "*"
 lavalink = "*"
 "chess.com" = "*"
 pylint = "*"
+datetime = "*"
 
 [dev-packages]
 
