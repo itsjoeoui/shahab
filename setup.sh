@@ -1,5 +1,5 @@
 #!/bin/sh
-git clean -fd
+git reset --hard
 git pull
 pipenv sync
 pkill screen
