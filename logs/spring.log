@@ -1,6 +1,0 @@
-2021-03-03 22:13:01.422  INFO 77282 --- [XNIO-1 task-35] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:60065
-2021-03-03 22:13:01.443  INFO 77282 --- [XNIO-1 task-35] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:60065
-2021-03-03 22:13:01.444  INFO 77282 --- [XNIO-1 I/O-5] lavalink.server.io.SocketServer          : {"op": "configureResuming", "key": "default-node", "timeout": 60}
-2021-03-03 22:13:01.445  WARN 77282 --- [pool-35-thread-1] oshi.software.os.mac.MacOSVersionInfoEx  : Unable to parse version 10.16 to a codename.
-2021-03-03 22:13:06.295  INFO 77282 --- [XNIO-1 I/O-5] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:60065 with status CloseStatus[code=1006, reason=] -- Session can be resumed within the next 60 seconds with key default-node
-2021-03-03 22:14:06.297  INFO 77282 --- [pool-35-thread-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
