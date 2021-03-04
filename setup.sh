@@ -1,4 +1,5 @@
 #!/bin/sh
+git clean -fd
 git pull
 pipenv sync
 pkill screen
