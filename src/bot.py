@@ -25,6 +25,6 @@ async def on_message(message):
     if message.content.lower() == 'bruh':
         await message.channel.send('bruh')
 
-    await client.process_commands(message)
+    await bot.process_commands(message)
 
 bot.run(TOKEN)
