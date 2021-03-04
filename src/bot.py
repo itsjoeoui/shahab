@@ -16,4 +16,13 @@ async def on_ready():
     bot.load_extension('cogs.others')
     print('We have logged in as {0.user}'.format(bot))
 
+@bot.event
+async def on_message(message):
+    # don't respond to ourselves
+    if message.author == bot.user:
+        return
+
+    if message.content.lower() == 'bruh':
+        await message.channel.send('bruh')
+
 bot.run(TOKEN)
