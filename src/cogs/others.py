@@ -119,6 +119,7 @@ class Others(commands.Cog):
 
     @commands.command()
     async def say(self, ctx, *, args):
+        await ctx.message.delete()
         await ctx.send(args)
 
     @commands.command()
