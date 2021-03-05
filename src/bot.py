@@ -11,7 +11,7 @@ bot = commands.Bot(command_prefix='/')
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity=discord.Game('my Tesla /help'))
+    await bot.change_presence(activity=discord.Game('shotguns /help'))
     bot.load_extension('cogs.admin')
     bot.load_extension('cogs.music')
     bot.load_extension('cogs.others')
