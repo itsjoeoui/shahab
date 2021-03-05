@@ -75,13 +75,24 @@ class Others(commands.Cog):
     async def wolfram(self, ctx, *args):
         keyword = " ".join(args)
         wolframalpha.get_full_result(keyword)
-        await ctx.send(file=discord.File('cache/wolfram.jpg', f'{keyword}.jpg'))
+        file = discord.File('cache/wolfram.jpg')
+        embed = discord.Embed(
+            color=discord.Color.red(), 
+            title=keyword
+        )
+        embed.set_image(url="attachment://wolfram.jpg")
+        await ctx.send(file=file, embed=embed)
 
     @commands.command()
     async def solve(self, ctx, *args):
         keyword = " ".join(args)
         result = wolframalpha.get_short_result(keyword)
-        await ctx.send(result)
+        embed = discord.Embed(
+            color = discord.Color.red(), 
+            title = keyword,
+            description = result
+        ) 
+        await ctx.send(embed=embed)
         if result == 'No short answer available':
             await ctx.send('Retrieving a long answer...')
             await self.wolfram(ctx, keyword)
@@ -99,8 +110,8 @@ class Others(commands.Cog):
         [View this profile on chess.com]({data['url']})
         """
         embed = discord.Embed(
-            title=data['name'],
-            color=discord.Color.green(),
+            title = data['name'],
+            color = discord.Color.green(),
             description = description
         )
         embed.set_thumbnail(url=data['avatar'])
