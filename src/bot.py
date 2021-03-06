@@ -34,6 +34,10 @@ async def on_message(message):
     if message.content.lower() == 'bruh':
         await message.channel.send('bruh')
 
+    if message.channel.id == 817549986857746492:
+        await message.delete()
+        await message.channel.send(message.content)
+
     await bot.process_commands(message)
 
 bot.run(TOKEN)
