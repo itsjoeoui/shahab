@@ -1,5 +1,4 @@
 import random
-import discord
 from discord.ext import commands
 
 class Games(commands.Cog):
@@ -10,7 +9,7 @@ class Games(commands.Cog):
         await ctx.send(random.randint(1, side))
 
     @roll.error
-    async def roll_error(self, ctx, error):
+    async def roll_error(self, ctx):
         await ctx.send("Bad argument! Please enter a positive integer! (default=6)")
 
 def setup(bot):

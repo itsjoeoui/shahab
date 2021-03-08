@@ -42,7 +42,7 @@ async def on_message(message):
         await message.channel.send(message.content)
     elif not message.guild:
         channel = bot.get_channel(817549986857746492)
-        await channel.send(message.content) 
+        await channel.send(message.content)
 
     await bot.process_commands(message)
 

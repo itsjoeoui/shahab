@@ -13,7 +13,7 @@ class Math(commands.Cog):
         wolframalpha.get_full_result(keyword)
         file = discord.File('cache/wolfram.jpg')
         embed = discord.Embed(
-            color=discord.Color.red(), 
+            color=discord.Color.red(),
             title=keyword
         )
         embed.set_image(url="attachment://wolfram.jpg")
@@ -24,10 +24,10 @@ class Math(commands.Cog):
         keyword = " ".join(args)
         result = wolframalpha.get_short_result(keyword)
         embed = discord.Embed(
-            color = discord.Color.red(), 
+            color = discord.Color.red(),
             title = keyword,
             description = result
-        ) 
+        )
         await ctx.send(embed=embed)
         if result == 'No short answer available':
             await ctx.send('Retrieving a long answer...')

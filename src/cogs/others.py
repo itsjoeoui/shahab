@@ -1,10 +1,6 @@
 import random
-import discord
 from discord.ext import commands
-from chessdotcom import get_player_profile as gpp
-from chessdotcom import is_player_online as ipo
 from cogs.utils import geocoding
-from cogs.utils import wolframalpha
 
 class Others(commands.Cog):
 
