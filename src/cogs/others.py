@@ -72,61 +72,6 @@ class Others(commands.Cog):
         await ctx.send(geocoding.get_full_address(args))
 
     @commands.command()
-    async def wolfram(self, ctx, *args):
-        keyword = " ".join(args)
-        wolframalpha.get_full_result(keyword)
-        file = discord.File('cache/wolfram.jpg')
-        embed = discord.Embed(
-            color=discord.Color.red(), 
-            title=keyword
-        )
-        embed.set_image(url="attachment://wolfram.jpg")
-        await ctx.send(file=file, embed=embed)
-
-    @commands.command()
-    async def solve(self, ctx, *args):
-        keyword = " ".join(args)
-        result = wolframalpha.get_short_result(keyword)
-        embed = discord.Embed(
-            color = discord.Color.red(), 
-            title = keyword,
-            description = result
-        ) 
-        await ctx.send(embed=embed)
-        if result == 'No short answer available':
-            await ctx.send('Retrieving a long answer...')
-            await self.wolfram(ctx, keyword)
-
-    @commands.command()
-    async def chess(self, ctx, *, args):
-        data = gpp(args).json
-        description = f"""
-        **Username:** {data['username']}
-        **Player ID:** {data['player_id']}
-        **Followers:** {data['followers']}
-        **Country:** {data['country'].split('/')[-1]}
-        **Status:** {data['status']}
-        **Is Online:** {ipo(args).json['online']}
-        [View this profile on chess.com]({data['url']})
-        """
-        embed = discord.Embed(
-            title = data['name'],
-            color = discord.Color.green(),
-            description = description
-        )
-        embed.set_thumbnail(url=data['avatar'])
-        await ctx.send(embed=embed)
-
-    @commands.command()
-    async def roll(self, ctx, *, side=6):
-        """This rolls a D6 by default. However, you can specify any number of sides."""
-        await ctx.send(random.randint(1, side))
-
-    @roll.error
-    async def roll_error(self, ctx, error):
-        await ctx.send("Bad argument! Please enter a positive integer! (default=6)")
-
-    @commands.command()
     async def say(self, ctx, *, args):
         await ctx.message.delete()
         await ctx.send(args)

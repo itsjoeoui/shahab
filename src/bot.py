@@ -13,8 +13,11 @@ bot = commands.Bot(command_prefix='/')
 async def on_ready():
     await bot.change_presence(activity=discord.Game('shotguns /help'))
     bot.load_extension('cogs.admin')
+    bot.load_extension('cogs.games')
+    bot.load_extension('cogs.math')
     bot.load_extension('cogs.music')
     bot.load_extension('cogs.others')
+    bot.load_extension('cogs.stats')
     print('We have logged in as {0.user}'.format(bot))
 
     @tasks.loop(minutes=10)
