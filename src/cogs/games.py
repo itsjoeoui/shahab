@@ -9,8 +9,9 @@ class Games(commands.Cog):
         await ctx.send(random.randint(1, side))
 
     @roll.error
-    async def roll_error(self, ctx):
-        await ctx.send("Bad argument! Please enter a positive integer! (default=6)")
+    async def roll_error(self, ctx, error):
+        if error:
+            await ctx.send("Bad argument! Please enter a positive integer! (default=6)")
 
 def setup(bot):
     bot.add_cog(Games(bot))
