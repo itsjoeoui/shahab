@@ -41,7 +41,7 @@ async def on_message(message):
         channel = bot.get_channel(817549986857746492)
         try:
             await channel.send(message.attachments[0].url)
-        except IndexError:
+        finally:
             await channel.send(message.content)
 
     await bot.process_commands(message)
