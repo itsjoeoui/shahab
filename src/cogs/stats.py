@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
-from chessdotcom import get_player_profile as gpp
-from chessdotcom import is_player_online as ipo
+import requests
 
 class Stats(commands.Cog):
 
@@ -10,14 +9,15 @@ class Stats(commands.Cog):
 
     @commands.command()
     async def chess(self, ctx, *, args):
-        data = gpp(args).json
+        serviceurl = "https://api.chess.com/pub/player/"
+        r = requests.get(serviceurl+args)
+        data = r.json()
         description = f"""
         **Username:** {data['username']}
         **Player ID:** {data['player_id']}
         **Followers:** {data['followers']}
         **Country:** {data['country'].split('/')[-1]}
         **Status:** {data['status']}
-        **Is Online:** {ipo(args).json['online']}
         [View this profile on chess.com]({data['url']})
         """
         embed = discord.Embed(

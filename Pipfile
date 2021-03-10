@@ -13,7 +13,6 @@ datetime = "*"
 owotext = "*"
 
 [dev-packages]
-"chess.com" = "*"
 
 [requires]
 python_version = "3.8"
