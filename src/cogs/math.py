@@ -9,6 +9,7 @@ class Math(commands.Cog):
 
     @commands.command()
     async def wolfram(self, ctx, *args):
+        '''Searches on Wolfram|Alpha.'''
         keyword = " ".join(args)
         wolframalpha.get_full_result(keyword)
         file = discord.File('cache/wolfram.jpg')
@@ -21,6 +22,7 @@ class Math(commands.Cog):
 
     @commands.command()
     async def solve(self, ctx, *args):
+        '''This can solve everything!'''
         keyword = " ".join(args)
         result = wolframalpha.get_short_result(keyword)
         embed = discord.Embed(

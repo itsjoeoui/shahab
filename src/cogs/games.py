@@ -8,7 +8,7 @@ class Games(commands.Cog):
 
     @commands.command()
     async def roll(self, ctx, *, side=6):
-        """This rolls a D6 by default. However, you can specify any number of sides."""
+        """This rolls a D6 by default. However, you can specify any number of sides by saying "/roll 69" for example."""
         await ctx.send(random.randint(1, side))
 
     @roll.error

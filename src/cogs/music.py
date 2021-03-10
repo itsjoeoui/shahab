@@ -84,7 +84,7 @@ class Music(commands.Cog):
 
     @commands.command(aliases=['s'])
     async def setup(self, ctx):
-        """Plays Lofi."""
+        """Plays lofi in Lofi Study Room voice channel."""
         # Get the player for this guild from cache.
         player = self.bot.lavalink.player_manager.get(ctx.guild.id)
         # Remove leading and trailing <>. <> may be used to suppress embedding links in Discord.
