@@ -37,7 +37,7 @@ async def on_message(message):
     if message.content.lower() == 'bruh':
         await message.channel.send('bruh')
 
-    if not message.guild:
+    if not message.guild and not message.content.startswith('/'):
         channel = bot.get_channel(817549986857746492)
         try:
             await channel.send(message.attachments[0].url)
