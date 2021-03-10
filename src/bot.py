@@ -3,11 +3,12 @@ from datetime import datetime as dt
 from dotenv import load_dotenv
 import discord
 from discord.ext import commands, tasks
+from pretty_help import PrettyHelp
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
-bot = commands.Bot(command_prefix='/')
+bot = commands.Bot(command_prefix='/', help_command=PrettyHelp())
 
 @bot.event
 async def on_ready():

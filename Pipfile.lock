@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "961eab5e3673b92fc2a689e3aa1beec207a050dff2b8883342c10535611a1c8f"
+            "sha256": "b8183de552928458d89250a3f554142735578d950617518be0259a87f0e6388b"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -81,6 +81,14 @@
             "index": "pypi",
             "version": "==4.3"
         },
+        "discord-pretty-help": {
+            "hashes": [
+                "sha256:caa30c0e8acf09d85a7261145e441f6113332641e825c5b046e097e37bf6ec6b",
+                "sha256:d136a72329f89e1210cbf42e47abd97e77d23c1fea56a3d9c8232210c5782601"
+            ],
+            "index": "pypi",
+            "version": "==1.2.2"
+        },
         "discord.py": {
             "hashes": [
                 "sha256:3df148daf6fbcc7ab5b11042368a3cd5f7b730b62f09fb5d3cbceff59bcfbb12",
@@ -102,7 +110,7 @@
                 "sha256:c729845434366216d320e936b8ad6f9d681aab72dc7cbc2d51bedc3582f3ad1e",
                 "sha256:fff4f0c04e1825522ce6949973e83110a6e907750cd92d128b0d14aaaadbffdc"
             ],
-            "markers": "python_version >= '3.6' and python_version < '4'",
+            "markers": "python_version >= '3.6' and python_version < '4.0'",
             "version": "==5.7.0"
         },
         "lavalink": {
@@ -224,7 +232,7 @@
                 "sha256:1b465e494e3e0d8939b50680403e3aedaa2bc434b7d5af64dfd3c958d7f5ae80",
                 "sha256:de3eedaad74a2683334e282005cd8d7f22f4d55fa690a2a1020a416cb0a47e73"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4' and python_version < '4'",
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4' and python_version < '4.0'",
             "version": "==1.26.3"
         },
         "wrapt": {

@@ -11,6 +11,7 @@ lavalink = "*"
 pylint = "*"
 datetime = "*"
 owotext = "*"
+discord-pretty-help = "*"
 
 [dev-packages]
 
