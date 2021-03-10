@@ -1,4 +1,5 @@
 import random
+from owotext import OwO
 from discord.ext import commands
 from cogs.utils import geocoding
 
@@ -66,6 +67,11 @@ class Others(commands.Cog):
     @commands.command()
     async def address(self, ctx, *, args):
         await ctx.send(geocoding.get_full_address(args))
+
+    @commands.command()
+    async def owo(self, ctx, *, args):
+        uwu = OwO()
+        await ctx.send(uwu.whatsthis(args))
 
     @commands.command()
     async def say(self, ctx, *, args):

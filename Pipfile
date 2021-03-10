@@ -8,11 +8,12 @@ name = "pypi"
 python-dotenv = "*"
 requests = "*"
 lavalink = "*"
-"chess.com" = "*"
 pylint = "*"
 datetime = "*"
+owotext = "*"
 
 [dev-packages]
+"chess.com" = "*"
 
 [requires]
 python_version = "3.8"
