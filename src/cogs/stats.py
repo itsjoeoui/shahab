@@ -9,7 +9,7 @@ class Stats(commands.Cog):
 
     @commands.command()
     async def chess(self, ctx, *, args):
-        '''Displays your chess.com stats.'''
+        """Displays your chess.com stats."""
         serviceurl = "https://api.chess.com/pub/player/"
         r = requests.get(serviceurl+args)
         data = r.json()

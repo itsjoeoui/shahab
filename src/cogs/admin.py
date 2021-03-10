@@ -8,27 +8,27 @@ class Admin(commands.Cog):
 
     @commands.command()
     async def ping(self, ctx):
-        '''Pong!'''
+        """Pong!"""
         await ctx.send(f'Pong! {round(self.bot.latency * 1000)}ms')
 
     @commands.command()
     @commands.has_permissions(administrator=True)
     async def kick(self, ctx, member: discord.Member, *, reason=None):
-        '''Kick.'''
+        """Kick."""
         await member.kick(reason=reason)
         await ctx.send(f'Kicked {member.mention}')
 
     @commands.command()
     @commands.has_permissions(administrator=True)
     async def ban(self, ctx, member: discord.Member, *, reason=None):
-        '''Ban.'''
+        """Ban."""
         await member.ban(reason=reason)
         await ctx.send(f'Banned {member.mention}')
 
     @commands.command()
     @commands.has_permissions(administrator=True)
     async def unban(self, ctx, *, member):
-        '''Unban.'''
+        """Unban."""
         banned_users = await ctx.guild.bans()
         name, discriminator = member.split('#')
         for ban_entry in banned_users:

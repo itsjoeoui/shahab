@@ -62,29 +62,29 @@ class Others(commands.Cog):
 
     @commands.command()
     async def runs(self, ctx):
-        '''Adios.'''
+        """Adios."""
         await ctx.send(random.choice(self.RUN_STRINGS))
 
     @commands.command()
     async def address(self, ctx, *, args):
-        '''Returns the full address of a specific place. '''
+        """Returns the full address of a specific place."""
         await ctx.send(geocoding.get_full_address(args))
 
     @commands.command()
     async def owo(self, ctx, *, args):
-        '''OwO!'''
+        """OwO!"""
         uwu = OwO()
         await ctx.send(uwu.whatsthis(args))
 
     @commands.command()
     async def say(self, ctx, *, args):
-        '''That's what Shahab said.'''
+        """That's what Shahab said."""
         await ctx.message.delete()
         await ctx.send(args)
 
     @commands.command()
     async def source(self, ctx):
-        '''Link to the source code.'''
+        """Link to the source code."""
         await ctx.send('GitHub: https://github.com/itsjoeoui/pydiscord')
 
 def setup(bot):
