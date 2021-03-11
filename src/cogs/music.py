@@ -17,8 +17,6 @@ class Music(commands.Cog):
             bot.lavalink.add_node('127.0.0.1', 2333, 'youshallnotpass', 'us', 'default-node')  # Host, Port, Password, Region, Name
             bot.add_listener(bot.lavalink.voice_update_handler, 'on_socket_response')
 
-        lavalink.add_event_hook(self.track_hook)
-
     def cog_unload(self):
         """Cog unload handler. This removes any event hooks that were registered."""
         self.bot.lavalink._event_hooks.clear()
@@ -67,13 +65,6 @@ class Music(commands.Cog):
 
             player.store('channel', self.channel.id)
             await self.connect_to(str(self.channel.id))
-
-    async def track_hook(self, event):
-        if isinstance(event, lavalink.events.QueueEndEvent):
-            # When this track_hook receives a "QueueEndEvent" from lavalink.py
-            # it indicates that there are no tracks left in the player's queue.
-            # To save on resources, we can tell the bot to disconnect from the voicechannel.
-            await self.connect_to(None)
 
     async def connect_to(self, channel_id: str):
         """A channel_id of `None` means disconnect."""
