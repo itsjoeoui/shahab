@@ -7,11 +7,11 @@ name = "pypi"
 "discord.py" = "*"
 python-dotenv = "*"
 requests = "*"
-lavalink = "*"
 pylint = "*"
 datetime = "*"
 owotext = "*"
 discord-pretty-help = "*"
+wavelink = "*"
 
 [dev-packages]
 
