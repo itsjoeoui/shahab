@@ -1,4 +1,3 @@
-import discord
 import wavelink
 from discord.ext import commands
 
@@ -37,7 +36,7 @@ class Music(commands.Cog):
         query = "https://www.youtube.com/watch?v=DWcJFNfaw9c"
 
         tracks = await self.bot.wavelink.get_tracks(f'ytsearch:{query}')
-        
+
         if not tracks:
             return await ctx.send('Could not find any songs with that query.')
 
