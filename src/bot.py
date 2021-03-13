@@ -6,30 +6,32 @@ from discord.ext import commands, tasks
 from pretty_help import PrettyHelp
 
 load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
+TOKEN = os.getenv("DISCORD_TOKEN")
 
-bot = commands.Bot(command_prefix='/', help_command=PrettyHelp(show_index=False))
+bot = commands.Bot(command_prefix="/", help_command=PrettyHelp(show_index=False))
+
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity=discord.Game('shotguns /help'))
+    await bot.change_presence(activity=discord.Game("shotguns /help"))
 
-    bot.load_extension('cogs.admin')
-    bot.load_extension('cogs.games')
-    bot.load_extension('cogs.math')
-    bot.load_extension('cogs.music')
-    bot.load_extension('cogs.others')
-    bot.load_extension('cogs.stats')
+    bot.load_extension("cogs.admin")
+    bot.load_extension("cogs.games")
+    bot.load_extension("cogs.math")
+    bot.load_extension("cogs.music")
+    bot.load_extension("cogs.others")
+    bot.load_extension("cogs.stats")
 
-    print('We have logged in as {0.user}'.format(bot))
+    print("We have logged in as {0.user}".format(bot))
 
     @tasks.loop(minutes=10)
     async def update_countdown():
-        dayleft = (dt(2021, 6, 3) - dt.now()).days+1
+        dayleft = (dt(2021, 6, 3) - dt.now()).days + 1
         channel = bot.get_channel(817116049325424700)
         await channel.edit(name=f"Semester Count: {dayleft}")
 
     update_countdown.start()
+
 
 @bot.event
 async def on_message(message):
@@ -37,10 +39,10 @@ async def on_message(message):
     if message.author == bot.user:
         return
 
-    if message.content.lower() == 'bruh':
-        await message.channel.send('bruh')
+    if message.content.lower() == "bruh":
+        await message.channel.send("bruh")
 
-    if not message.guild and not message.content.startswith('/'):
+    if not message.guild and not message.content.startswith("/"):
         channel = bot.get_channel(817549986857746492)
         try:
             await channel.send(message.attachments[0].url)
@@ -48,5 +50,6 @@ async def on_message(message):
             await channel.send(message.content)
 
     await bot.process_commands(message)
+
 
 bot.run(TOKEN)

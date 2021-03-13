@@ -3,6 +3,7 @@ from owotext import OwO
 from discord.ext import commands
 from cogs.utils import geocoding
 
+
 class Others(commands.Cog):
 
     RUN_STRINGS = (
@@ -31,7 +32,7 @@ class Others(commands.Cog):
         "May the odds be ever in your favour.",
         "Famous last words.",
         "And they disappeared forever, never to be seen again.",
-        "\"Oh, look at me! I'm so cool, I can run from a bot!\" - this person",
+        '"Oh, look at me! I\'m so cool, I can run from a bot!" - this person',
         "Yeah yeah, just tap /kickme already.",
         "Here, take this ring and head to Mordor while you're at it.",
         "Legend has it, they're still running...",
@@ -85,7 +86,8 @@ class Others(commands.Cog):
     @commands.command()
     async def source(self, ctx):
         """Link to the source code."""
-        await ctx.send('GitHub: https://github.com/itsjoeoui/pydiscord')
+        await ctx.send("GitHub: https://github.com/itsjoeoui/pydiscord")
+
 
 def setup(bot):
     bot.add_cog(Others(bot))

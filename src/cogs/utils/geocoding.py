@@ -9,20 +9,22 @@ api_key = False
 
 if api_key is False:
     api_key = 42
-    serviceurl = 'http://py4e-data.dr-chuck.net/json?'
+    serviceurl = "http://py4e-data.dr-chuck.net/json?"
 else:
-    serviceurl = 'https://maps.googleapis.com/maps/api/geocode/json?'
+    serviceurl = "https://maps.googleapis.com/maps/api/geocode/json?"
 
 # Ignore SSL certificate errors
 ctx = ssl.create_default_context()
 ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
+
 def get_full_address(address):
 
     parms = dict()
-    parms['address'] = address
-    if api_key is not False: parms['key'] = api_key
+    parms["address"] = address
+    if api_key is not False:
+        parms["key"] = api_key
     url = serviceurl + urllib.parse.urlencode(parms)
 
     uh = urllib.request.urlopen(url, context=ctx)
@@ -33,8 +35,8 @@ def get_full_address(address):
     except:
         js = None
 
-    if not js or 'status' not in js or js['status'] != 'OK':
+    if not js or "status" not in js or js["status"] != "OK":
         return f"Can't find {address} in the database"
 
-    location = js['results'][0]['formatted_address']
+    location = js["results"][0]["formatted_address"]
     return location

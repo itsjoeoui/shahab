@@ -2,8 +2,8 @@ import discord
 from discord.ext import commands
 import requests
 
-class Stats(commands.Cog):
 
+class Stats(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -11,7 +11,7 @@ class Stats(commands.Cog):
     async def chess(self, ctx, *, args):
         """Displays your chess.com stats."""
         serviceurl = "https://api.chess.com/pub/player/"
-        r = requests.get(serviceurl+args)
+        r = requests.get(serviceurl + args)
         data = r.json()
         description = f"""
         **Username:** {data['username']}
@@ -22,12 +22,11 @@ class Stats(commands.Cog):
         [View this profile on chess.com]({data['url']})
         """
         embed = discord.Embed(
-            title = data['name'],
-            color = discord.Color.green(),
-            description = description
+            title=data["name"], color=discord.Color.green(), description=description
         )
-        embed.set_thumbnail(url=data['avatar'])
+        embed.set_thumbnail(url=data["avatar"])
         await ctx.send(embed=embed)
+
 
 def setup(bot):
     bot.add_cog(Stats(bot))
