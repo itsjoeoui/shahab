@@ -1,5 +1,7 @@
 import random
 from owotext import OwO
+import requests
+import discord
 from discord.ext import commands
 from cogs.utils import geocoding
 
@@ -70,6 +72,34 @@ class Others(commands.Cog):
     async def address(self, ctx, *, args):
         """Returns the full address of a specific place."""
         await ctx.send(geocoding.get_full_address(args))
+
+    @commands.command()
+    async def urban(self, ctx, *, args):
+        """Searches on urbandictionary.com"""
+        serviceurl = "https://api.urbandictionary.com/v0/define?"
+
+        r = requests.get(serviceurl, params={"term": args})
+        data = r.json()
+        if not data["list"]:
+            description = "**Word not found!**"
+            embed = discord.Embed(
+                title=args, color=discord.Color.red(), description=description
+            )
+        else:
+
+            def clean_up(text):
+                text = text.replace("[", "**")
+                text = text.replace("]", "**")
+                return text
+
+            description = f"""
+            **Definition:** {clean_up(data['list'][0]['definition'])}
+            **Example:** {clean_up(data['list'][0]['example'])}
+            """
+            embed = discord.Embed(
+                title=args, color=discord.Color.green(), description=description
+            )
+        await ctx.send(embed=embed)
 
     @commands.command()
     async def owo(self, ctx, *, args):
