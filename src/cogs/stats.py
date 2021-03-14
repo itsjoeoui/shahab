@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import requests
+from cogs.utils import openweather
 
 
 class Stats(commands.Cog):
@@ -25,6 +26,35 @@ class Stats(commands.Cog):
             title=data["name"], color=discord.Color.green(), description=description
         )
         embed.set_thumbnail(url=data["avatar"])
+        await ctx.send(embed=embed)
+
+    @commands.command()
+    async def weather(self, ctx, *, args="Montreal"):
+        """Shows the weather. Montreal by default."""
+        data = openweather.get_weather(args)
+
+        if data["cod"] == "404":
+            description = "**City not found!**"
+            embed = discord.Embed(
+                title=args, color=discord.Color.red(), description=description
+            )
+        else:
+            title = f"""
+            **City:** {data['name']} ({data['weather'][0]['main']}) 
+            """
+            description = f"""
+            **Temp:** {data['main']['temp']} °C
+            **Feels like:** {data['main']['feels_like']} °C
+            **Min temp:** {data['main']['temp_min']} °C
+            **Max temp:** {data['main']['temp_max']} °C
+            """
+            embed = discord.Embed(
+                title=title, color=discord.Color.green(), description=description
+            )
+            url = (
+                f"http://openweathermap.org/img/wn/{data['weather'][0]['icon']}@2x.png"
+            )
+            embed.set_thumbnail(url=url)
         await ctx.send(embed=embed)
 
 

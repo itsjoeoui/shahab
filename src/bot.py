@@ -6,7 +6,7 @@ from discord.ext import commands, tasks
 from pretty_help import PrettyHelp
 
 load_dotenv()
-TOKEN = os.getenv("DISCORD_TOKEN")
+TOKEN = os.getenv("DISCORD")
 
 bot = commands.Bot(command_prefix="/", help_command=PrettyHelp(show_index=False))
 

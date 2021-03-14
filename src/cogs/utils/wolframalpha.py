@@ -3,7 +3,7 @@ import requests
 from dotenv import load_dotenv
 
 load_dotenv()
-TOKEN = os.getenv("WOLFRAM_TOKEN")
+TOKEN = os.getenv("WOLFRAM")
 
 serviceurls = {
     "simple": "http://api.wolframalpha.com/v1/simple?",
