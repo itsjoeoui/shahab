@@ -22,9 +22,9 @@ class Stats(commands.Cog):
         **Status:** {data['status']}
         [View this profile on chess.com]({data['url']})
         """
-        embed = discord.Embed(
-            title=data["name"], color=discord.Color.green(), description=description
-        )
+        embed = discord.Embed(title=data["name"],
+                              color=discord.Color.green(),
+                              description=description)
         embed.set_thumbnail(url=data["avatar"])
         await ctx.send(embed=embed)
 
@@ -35,9 +35,9 @@ class Stats(commands.Cog):
 
         if data["cod"] == "404":
             description = "**City not found!**"
-            embed = discord.Embed(
-                title=args, color=discord.Color.red(), description=description
-            )
+            embed = discord.Embed(title=args,
+                                  color=discord.Color.red(),
+                                  description=description)
         else:
             title = f"""
             **City:** {data['name']} ({data['weather'][0]['main']}) 
@@ -48,9 +48,9 @@ class Stats(commands.Cog):
             **Min temp:** {data['main']['temp_min']} °C
             **Max temp:** {data['main']['temp_max']} °C
             """
-            embed = discord.Embed(
-                title=title, color=discord.Color.green(), description=description
-            )
+            embed = discord.Embed(title=title,
+                                  color=discord.Color.green(),
+                                  description=description)
             url = (
                 f"http://openweathermap.org/img/wn/{data['weather'][0]['icon']}@2x.png"
             )

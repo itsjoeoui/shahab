@@ -22,9 +22,9 @@ class Math(commands.Cog):
         """Shahab can solve everything!"""
         keyword = " ".join(args)
         result = wolframalpha.get_short_result(keyword)
-        embed = discord.Embed(
-            color=discord.Color.red(), title=keyword, description=result
-        )
+        embed = discord.Embed(color=discord.Color.red(),
+                              title=keyword,
+                              description=result)
         await ctx.send(embed=embed)
         if result == "No short answer available":
             await ctx.send("Retrieving a long answer...")

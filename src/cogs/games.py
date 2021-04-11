@@ -11,14 +11,16 @@ class Games(commands.Cog):
         """Rolls a D6 by default. However, you can specify any number of sides by saying "/roll 69" for example."""
         chance = random.randint(1, 100)
         if chance <= 20:
-            await ctx.send("Never gonna give you up, never gonna let you down...")
+            await ctx.send(
+                "Never gonna give you up, never gonna let you down...")
         else:
             await ctx.send(random.randint(1, side))
 
     @roll.error
     async def roll_error(self, ctx, error):
         if error:
-            await ctx.send("Bad argument! Please enter a positive integer! (default=6)")
+            await ctx.send(
+                "Bad argument! Please enter a positive integer! (default=6)")
 
 
 def setup(bot):

@@ -82,9 +82,9 @@ class Others(commands.Cog):
         data = r.json()
         if not data["list"]:
             description = "**Word not found!**"
-            embed = discord.Embed(
-                title=args, color=discord.Color.red(), description=description
-            )
+            embed = discord.Embed(title=args,
+                                  color=discord.Color.red(),
+                                  description=description)
         else:
 
             def clean_up(text):
@@ -96,9 +96,9 @@ class Others(commands.Cog):
             **Definition:** {clean_up(data['list'][0]['definition'])}
             **Example:** {clean_up(data['list'][0]['example'])}
             """
-            embed = discord.Embed(
-                title=args, color=discord.Color.green(), description=description
-            )
+            embed = discord.Embed(title=args,
+                                  color=discord.Color.green(),
+                                  description=description)
         await ctx.send(embed=embed)
 
     @commands.command()

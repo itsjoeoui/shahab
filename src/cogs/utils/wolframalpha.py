@@ -12,7 +12,11 @@ serviceurls = {
 
 
 def get_full_result(keyword):
-    r = requests.get(serviceurls["simple"], params={"appid": TOKEN, "i": keyword})
+    r = requests.get(serviceurls["simple"],
+                     params={
+                         "appid": TOKEN,
+                         "i": keyword
+                     })
     filename = "cache/wolfram.jpg"
     os.makedirs(os.path.dirname(filename), exist_ok=True)
     with open(filename, "wb") as handler:
@@ -20,7 +24,11 @@ def get_full_result(keyword):
 
 
 def get_short_result(keyword):
-    r = requests.get(serviceurls["short"], params={"appid": TOKEN, "i": keyword})
+    r = requests.get(serviceurls["short"],
+                     params={
+                         "appid": TOKEN,
+                         "i": keyword
+                     })
     if r.text == "Wolfram|Alpha did not understand your input":
         return "Sorry, I did not understand your input..."
     return r.text
