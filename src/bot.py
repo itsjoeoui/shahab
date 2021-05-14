@@ -26,7 +26,7 @@ async def on_ready():
 
     @tasks.loop(minutes=10)
     async def update_countdown():
-        dayleft = (dt(2021, 5, 31) - dt.now()).days + 1
+        dayleft = (dt(2021, 6, 4) - dt.now()).days + 1
         channel = bot.get_channel(842556090616119296)
         await channel.edit(name=f"Semester Count: {dayleft}")
 
