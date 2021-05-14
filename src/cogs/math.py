@@ -33,11 +33,12 @@ class Math(commands.Cog):
 
     @commands.command()
     async def number(self, ctx, *, args):
-        r = requests.get(f"http://numbersapi.com/{args}/math")
-        if "<title>Error</title>" in r.text:
-            await ctx.send("Invalid argument!")
-        else:
+        try:
+            num = int(args)
+            r = requests.get(f"http://numbersapi.com/{str(num)}/math")
             await ctx.send(r.text)
+        except ValueError:
+            await ctx.send("Invalid argument!")
 
 
 def setup(bot):
