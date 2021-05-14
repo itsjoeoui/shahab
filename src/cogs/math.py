@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from cogs.utils import wolframalpha
+import requests
 
 
 class Math(commands.Cog):
@@ -29,6 +30,14 @@ class Math(commands.Cog):
         if result == "No short answer available":
             await ctx.send("Retrieving a long answer...")
             await self.wolfram(ctx, keyword)
+
+    @commands.command()
+    async def number(self, ctx, *, args):
+        r = requests.get(f"http://numbersapi.com/{args}/math")
+        if "<title>Error</title>" in r.text:
+            await ctx.send("Invalid argument!")
+        else:
+            await ctx.send(r.text)
 
 
 def setup(bot):
