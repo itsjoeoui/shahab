@@ -26,9 +26,13 @@ async def on_ready():
 
     @tasks.loop(minutes=10)
     async def update_countdown():
-        dayleft = (dt(2021, 6, 4) - dt.now()).days + 1
+        semcount = (dt(2021, 6, 4) - dt.now()).days + 1
         channel = bot.get_channel(842556090616119296)
-        await channel.edit(name=f"Semester Count: {dayleft}")
+        if semcount < 0:
+            sumcount = (dt(2021, 8, 18) - dt.now()).days + 1
+            await channel.edit(name=f"Summer Count: {sumcount}")
+        else:
+            await channel.edit(name=f"Semester Count: {semcount}")
 
     update_countdown.start()
 
