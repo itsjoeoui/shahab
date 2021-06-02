@@ -15,14 +15,13 @@ class Stats(commands.Cog):
         r = requests.get(serviceurl + args)
         data = r.json()
         description = f"""
-        **Username:** {data['username']}
         **Player ID:** {data['player_id']}
         **Followers:** {data['followers']}
         **Country:** {data['country'].split('/')[-1]}
         **Status:** {data['status']}
         [View this profile on chess.com]({data['url']})
         """
-        embed = discord.Embed(title=data["name"],
+        embed = discord.Embed(title=data["username"],
                               color=discord.Color.green(),
                               description=description)
         embed.set_thumbnail(url=data["avatar"])
