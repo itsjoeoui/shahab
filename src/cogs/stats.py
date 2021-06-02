@@ -24,7 +24,11 @@ class Stats(commands.Cog):
         embed = discord.Embed(title=data["username"],
                               color=discord.Color.green(),
                               description=description)
-        embed.set_thumbnail(url=data["avatar"])
+        try:
+            embed.set_thumbnail(url=data["avatar"])
+        except:
+            embed.set_thumbnail(
+                url="https://static.wikia.nocookie.net/universe-of-smash-bros-lawl/images/3/30/Rick-Roll.png/revision/latest/scale-to-width-down/310?cb=20150317110521")
         await ctx.send(embed=embed)
 
     @commands.command()
