@@ -26,7 +26,7 @@ async def on_ready():
 
     @tasks.loop(minutes=10)
     async def update_countdown():
-        semcount = (dt(2021, 12, 21) - dt.now()).days + 1
+        semcount = (dt(2022, 05, 13) - dt.now()).days + 1
         channel = bot.get_channel(879538356214722600)
         await channel.edit(name=f"Semester Count: {semcount}")
 
